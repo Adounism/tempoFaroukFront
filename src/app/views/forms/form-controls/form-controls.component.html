@@ -1,0 +1,42 @@
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+
+        <strong>Liste des Historique</strong>
+
+          <!-- <button style="float: right;" class="btn float-right" color="primary"   cButton> ajouter
+    
+          </button> -->
+          <div class="col-sm-7">
+            <input type="text" class="form-control" placeholder="Search user historique" [(ngModel)]="searchText" ng aria-label="Search">
+          </div>
+
+    </c-card-header>
+    <c-card-body>
+
+        <table cTable class="center-align">
+          <caption>Historique des Transactions</caption>
+          <thead>
+          <tr >
+            <th scope="col"><i class="fa fa-sort">Client </i></th>
+            <th scope="col" *ngFor="let ope of listOperation"><i class="fa fa-sort">{{ope.name}} </i></th>
+            <th scope="col">Montant Total</th>
+            <th scope="col">Times</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let historique of historiqueData">
+            <!-- <th scope="row">1</th> -->
+            <td>{{historique.firstName}}</td>
+            <td *ngFor="let userope of historique.transactions" >{{operationTotal}}</td>
+            <td>{{historique?.transactions.amount}}</td>
+            <td>{{historique.createdAt | date :'shrt'}}</td>
+          </tr>
+          <tr class="center-align">
+            <!-- <td *ngIf="historiqueData.length == 0"  class="center-align" colspan="4">No Historique Found</td> -->
+          </tr>
+          </tbody>
+        </table>
+    </c-card-body>
+  </c-card>
+</c-col>

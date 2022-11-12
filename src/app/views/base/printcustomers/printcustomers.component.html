@@ -1,0 +1,51 @@
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+
+        <strong>Liste des Clients</strong>
+
+          <button style="float: right;" class="btn float-right" color="primary"  [routerLink]="['/base/customers']" cButton> ajouter
+    
+          </button>
+
+    </c-card-header>
+    <c-card-body>
+
+        <table cTable class="center-align">
+          <caption>Listes des Clients</caption>
+          <thead>
+          <tr>
+            <th scope="col">Nom </th>
+            <th scope="col">Prenom </th>
+            <th scope="col">contact</th>
+            <th scope="col">actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let customer of customers | paginate: { itemsPerPage: 20, currentPage: page, totalItems: total } ">
+            <!-- <th scope="row">1</th> -->
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.phone}}</td>
+            <td>
+              <button type="button" rel="tooltip" (click)="deleteCustomer(customer.id)" class="btn btn-danger btn-just-icon btn-sm">
+                <svg cIcon class="me-2" class="center-align" name="cil-trash"></svg>
+            </button>
+            <button type="button" rel="tooltip" class="btn btn-info btn-just-icon btn-sm" [routerLink]="['/base/editcustomer/',customer.id]" data-original-title="" title="">
+              <svg cIcon class="me-2" class="center-align" name="cil-pencil"></svg>
+            </button>
+            <button type="button" rel="tooltip" class="btn btn-warning btn-just-icon btn-sm" [routerLink]="['/base/historique/',customer.id]" data-original-title="" title="">
+              <svg cIcon class="me-2" class="center-align" name="cil-notes"></svg>
+            </button>
+            </td>
+          </tr>
+          <!-- <tr class="center-align">
+            <td *ngIf="customers.length == 0"  class="center-align" colspan="4">No Customers Found</td>
+          </tr> -->
+          </tbody>
+        </table>
+        
+  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </c-card-body>
+  </c-card>
+</c-col>

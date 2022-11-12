@@ -1,0 +1,125 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Ajouter un Client</strong>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Veillez fournir les informations du clients.
+        </p>
+        <form cForm class="row g-3" *ngIf="currentCustomer" [formGroup]="customerForm" >
+          <c-col [md]="6">
+            <label cLabel for="inputEmail4">Nom:</label>
+            <input cFormControl id="inputEmail4" name="firstName"  [(ngModel)]="currentCustomer.firstName" formControlName="firstName" type="text" />
+            <div
+              *ngIf="customerForm.controls['firstName'].invalid && (customerForm.controls['firstName'].dirty || customerForm.controls['firstName'].touched || submitted)"
+              class="alert alert-danger">
+              <div *ngIf="customerForm.controls['firstName'].errors?.['required']">
+                Le nom du client est requis.</div>
+            </div>
+
+          </c-col>
+          <c-col [md]="6">
+            <label cLabel for="inputPassword4">Prenom:</label>
+            <input cFormControl id="inputPassword4" [(ngModel)]="currentCustomer.lastName" formControlName="lastName" name="lastName" type="text" />
+            <div
+              *ngIf="customerForm.controls['lastName'].invalid && (customerForm.controls['lastName'].dirty || customerForm.controls['lastName'].touched || submitted)"
+              class="alert alert-danger">
+              <div *ngIf="customerForm.controls['lastName'].errors?.['required']">
+                Le prenom est requis.</div>
+            </div>
+          </c-col>
+
+          <c-row [gutter]="{g: 2}">
+            <c-col [md]>
+              <div cFormFloating>
+                <input cFormControl id="floatingInputGrid" type="email" formControlName="email" value="email@example.com"
+                [(ngModel)]="currentCustomer.email" />
+                <label cLabel for="floatingInputGrid">Email address</label>
+              </div>
+            </c-col>
+
+          </c-row>
+
+          <c-col [xs]="12">
+            <label cLabel for="inputAddress">Address</label>
+            <input cFormControl id="inputAddress" name="address" formControlName="address" [(ngModel)]="currentCustomer.address"
+              placeholder="1234 Bamako coura" />
+          </c-col>
+
+          <c-col [md]="6">
+            <label cLabel for="inputCity">Contact: </label>
+            <input cFormControl id="inputCity" type="tel" name="phone" formControlName="phone"  [(ngModel)]="currentCustomer.phone"
+              placeholder="numero de télephone" />
+
+            <div
+              *ngIf="customerForm.controls['phone'].invalid && (customerForm.controls['phone'].dirty || customerForm.controls['phone'].touched || submitted)"
+              class="alert alert-danger">
+              <div *ngIf="customerForm.controls['phone'].errors?.['required']">
+                Le numero du client est requis.</div>
+            </div>
+
+          </c-col>
+
+
+          <c-col [md]="6">
+            <label cLabel for="inputCity">occupation: </label>
+            <input cFormControl id="inputCity" type="text" name="occupation"  formControlName="occupation" [(ngModel)]="currentCustomer.occupation"
+              placeholder="occupation" />
+          </c-col>
+
+
+          <c-col [md]="6">
+            <label cLabel for="inputCity">pdvNumber: </label>
+            <input cFormControl id="inputCity" type="text" name="pdvNumber"  formControlName="pdvNumber" [(ngModel)]="currentCustomer.pdvNumber"
+              placeholder="pdvNumber " />
+          </c-col>
+
+
+          <!-- <c-col [md]="4">
+          <label cLabel for="inputState">State</label>
+          <select cSelect id="inputState">
+          <option>Choose...</option>
+          <option>...</option>
+          </select>
+          </c-col>
+          <c-col [md]="2">
+          <label cLabel for="inputZip">Zip</label>
+          <input cFormControl id="inputZip" />
+          </c-col>
+          <c-col [xs]="12">
+          <c-form-check>
+          <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" />
+          <label cFormCheckLabel for="gridCheck">Check me out</label>
+          </c-form-check>
+          </c-col> -->
+          <c-col [xs]="12">
+            <button cButton type="submit" (click)="updateCustomer()">Ajouter</button>
+          </c-col>
+        </form>
+      </c-card-body>
+    </c-card>
+
+    <!-- <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Accordion</strong> alwaysOpen
+      </c-card-header>
+      <c-card-body>
+        <app-docs-example href="components/accordion#always-open">
+          <c-accordion [alwaysOpen]="true" class="shadow accordion-custom">
+            <c-accordion-item *ngFor="let item of items; let i = index;" [visible]="i===1">
+              <ng-template cTemplateId="accordionHeader">
+                Custom Accordion item #{{i}}
+              </ng-template>
+              <ng-template cTemplateId="accordionBody">
+                <small><i>{{i}}.</i></small>
+                <span [innerHTML]="getAccordionBodyText(i.toString())"></span>
+              </ng-template>
+            </c-accordion-item>
+          </c-accordion>
+        </app-docs-example>
+      </c-card-body>
+    </c-card> -->
+  </c-col>
+</c-row>

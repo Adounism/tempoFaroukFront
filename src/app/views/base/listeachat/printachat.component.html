@@ -1,0 +1,125 @@
+<!-- <c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <app-docs-callout href="components/popover" name="Popover"></app-docs-callout>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Popover</strong> <small>Basic example</small>
+      </c-card-header>
+      <c-card-body>
+        <app-docs-example href="components/popover">
+          <button [cPopover]="popoverHtml"
+                  cPopoverPlacement="right"
+                  [cPopoverTrigger]="'click'"
+                  [cPopoverVisible]="visible"
+                  cButton
+                  class="m-1"
+                  color="danger"
+                  size="lg">
+            Click to toggle popover
+            <ng-template #popoverHtml>
+              <h3 class="popover-header">
+                Popover Title
+              </h3>
+              <div class="popover-body">
+                And here’s some amazing content. It’s very engaging. Right?
+              </div>
+            </ng-template>
+          </button>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Popover</strong> <small>Four directions</small>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Four options are available: top, right, bottom, and left aligned.
+        </p>
+        <app-docs-example href="components/popover#four-directions">
+          <button [cPopoverTrigger]="'hover'" cButton [cPopover]="tooltipHtml"
+                  cPopoverPlacement="top" class="me-1"
+                  color="secondary">Popover on top
+            <ng-template #tooltipHtml>
+              <div class="popover-body">
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Top!
+              </div>
+            </ng-template>
+          </button>
+          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Right!"
+                  cPopoverPlacement="right"
+                  class="me-1" color="secondary">Popover on right
+          </button>
+          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Bottom!"
+                  cPopoverPlacement="bottom"
+                  class="me-1" color="secondary">Popover on bottom
+          </button>
+          <button [cPopoverTrigger]="'hover'" cButton cPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus. Left!"
+                  cPopoverPlacement="left" class="me-1"
+                  color="secondary">Popover on left
+          </button>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row> -->
+
+
+
+
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+
+        <strong>Liste des Achats</strong>
+
+          <button style="float: right;" class="btn float-right" color="primary"  [routerLink]="['/base/addpurchase']" cButton> ajouter
+    
+          </button>
+
+
+    </c-card-header>
+    <c-card-body>
+
+      <!-- <p class="text-medium-emphasis small">
+        A <code>&lt;caption&gt;</code> functions like a heading for a table. It helps
+        users with screen readers to find a table and understand what it's about and
+        decide if they want to read it.
+      </p> -->
+
+        <table cTable>
+          <caption>Listes des Achats</caption>
+          <thead>
+          <tr>
+            <th scope="col">Nom </th>
+            <th scope="col">Prenom </th>
+            <th scope="col">Business</th>
+            <th scope="col">Montant</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let purchase of listePurchases">
+            <td>{{purchase.provider.individual?.firstName}}</td>
+            <td>{{purchase.provider.individual?.lastName}}</td>
+            <td>{{purchase.provider.business?.name}}</td>
+            <td>{{purchase.amount}}</td>
+            <td>
+              <button type="button" rel="tooltip" (click)="deletePurchase(purchase.id)" class="btn btn-danger btn-just-icon btn-sm">
+                <svg cIcon class="me-2" class="center-align" name="cil-trash"></svg>
+            </button>
+            <button type="button" rel="tooltip" class="btn btn-info btn-just-icon btn-sm" [routerLink]="['/base/editachat/',purchase.id]" data-original-title="" title="">
+              <svg cIcon class="me-2" class="center-align" name="cil-pencil"></svg>
+            </button>
+            </td>
+          </tr>
+          
+          </tbody>
+        </table>
+    </c-card-body>
+  </c-card>
+</c-col>
